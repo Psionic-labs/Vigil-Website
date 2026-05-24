@@ -1,0 +1,88 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+
+export default function AnimatedTaglines() {
+  const blocks = [
+    {
+      index: "01",
+      word: "VIGIL",
+      line1: "Where every broken session becomes a report,",
+      line2: "and every report becomes a fix.",
+    },
+    {
+      index: "02",
+      word: "SIGNAL",
+      line1: "Through the noise of real user behavior,",
+      line2: "the failures that matter rise first.",
+    },
+    {
+      index: "03",
+      word: "TRIAGE",
+      line1: "Before your users open a ticket,",
+      line2: "the bug is already in your queue.",
+    },
+  ];
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  return (
+    <section className="bg-slate-50 py-20 border-b border-slate-200">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="flex flex-col"
+        >
+          {blocks.map((block, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className={`group relative py-12 flex flex-col justify-between items-start transition-all duration-300 ${
+                index !== 0 ? "border-t border-slate-200" : ""
+              }`}
+            >
+              {/* Monospace index number at top-right */}
+              <span className="absolute top-4 right-0 font-mono text-[10px] text-slate-400 tracking-widest font-bold">
+                INDEX // {block.index}
+              </span>
+
+              {/* Large Display Word */}
+              <h2 className="font-sans font-extrabold text-5xl sm:text-7xl tracking-tighter text-slate-900 mb-4 transition-all duration-300 group-hover:text-brand-700 group-hover:opacity-90 select-none">
+                {block.word}
+              </h2>
+
+              {/* Tagline Copy */}
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl font-medium">
+                <span className="block">{block.line1}</span>
+                <span className="block">{block.line2}</span>
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
