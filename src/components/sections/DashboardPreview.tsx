@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Filter, ArrowUpDown, Search, GitMerge, ExternalLink } from "lucide-react";
+import { Filter, ArrowUpDown, Search, GitMerge } from "lucide-react";
 import SeverityBadge from "@/components/ui/SeverityBadge";
 
 export default function DashboardPreview() {

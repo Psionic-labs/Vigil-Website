@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, GitBranch, ExternalLink } from "lucide-react";
+import { ArrowRight, GitBranch } from "lucide-react";
 import SeverityBadge from "@/components/ui/SeverityBadge";
 
 export default function HeroSection() {
