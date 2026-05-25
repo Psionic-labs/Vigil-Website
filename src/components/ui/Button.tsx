@@ -22,7 +22,7 @@ export default function Button({
     "inline-flex items-center justify-center font-sans font-bold uppercase tracking-wider rounded transition-all duration-200 focus:outline-none";
 
   const variants = {
-    primary: "text-white bg-brand-700 hover:bg-brand-800 shadow-sm",
+    primary: "text-white bg-[#0f172a] hover:bg-slate-800 hover:ring-2 hover:ring-brand-400/40 shadow-sm",
     secondary: "text-slate-700 bg-white border border-slate-200 hover:bg-slate-50",
     ghost: "text-slate-600 hover:text-slate-900",
   };
