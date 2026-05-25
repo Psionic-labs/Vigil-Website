@@ -2,29 +2,9 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { taglineBlocks } from "@/config/site";
 
 export default function AnimatedTaglines() {
-  const blocks = [
-    {
-      index: "01",
-      word: "VIGIL",
-      line1: "Where every broken session becomes a report,",
-      line2: "and every report becomes a fix.",
-    },
-    {
-      index: "02",
-      word: "SIGNAL",
-      line1: "Through the noise of real user behavior,",
-      line2: "the failures that matter rise first.",
-    },
-    {
-      index: "03",
-      word: "TRIAGE",
-      line1: "Before your users open a ticket,",
-      line2: "the bug is already in your queue.",
-    },
-  ];
-
   const containerVariants: Variants = {
     hidden: {},
     visible: {
@@ -46,7 +26,6 @@ export default function AnimatedTaglines() {
     },
   };
 
-
   return (
     <section className="bg-slate-50 py-20 border-b border-slate-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -57,7 +36,7 @@ export default function AnimatedTaglines() {
           viewport={{ once: true, margin: "-100px" }}
           className="flex flex-col"
         >
-          {blocks.map((block, index) => (
+          {taglineBlocks.map((block, index) => (
             <motion.div
               key={index}
               variants={itemVariants}

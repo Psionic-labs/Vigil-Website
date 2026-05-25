@@ -2,31 +2,9 @@
 
 import React from "react";
 import { Github, Twitter } from "lucide-react";
+import { siteConfig, footerLinks } from "@/config/site";
 
 export default function Footer() {
-  const productLinks = [
-    { name: "Issues", href: "#product" },
-    { name: "Sessions", href: "#features" },
-    { name: "GitHub Integration", href: "#features" },
-    { name: "Pricing", href: "#install" },
-    { name: "Changelog", href: "#" },
-  ];
-
-  const developerLinks = [
-    { name: "Docs", href: "#" },
-    { name: "SDK Reference", href: "#" },
-    { name: "SDK Contract", href: "#" },
-    { name: "API Reference", href: "#" },
-    { name: "Status", href: "#" },
-  ];
-
-  const companyLinks = [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
-  ];
-
   return (
     <footer className="bg-white border-t border-slate-100 py-16 font-sans">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,23 +15,23 @@ export default function Footer() {
           <div className="md:col-span-4 flex flex-col items-start gap-4">
             <a href="#" className="flex items-center gap-1.5 focus:outline-none">
               <span className="font-sans font-extrabold tracking-tight text-xl text-slate-900">
-                Vigil<span className="text-brand-700">.</span>
+                {siteConfig.name}<span className="text-brand-700">.</span>
               </span>
             </a>
             <p className="text-xs text-slate-500 font-normal leading-relaxed max-w-xs">
-              AI-native bug triage platform. Capture user sessions, resolve regressions, and automate issue pipelines.
+              {siteConfig.description}
             </p>
             {/* Social Links */}
             <div className="flex items-center gap-3.5 mt-2">
               <a
-                href="#"
+                href={siteConfig.socials.github}
                 className="text-slate-400 hover:text-slate-600 transition-colors"
                 aria-label="GitHub Profile"
               >
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href={siteConfig.socials.twitter}
                 className="text-slate-400 hover:text-slate-600 transition-colors"
                 aria-label="Twitter Profile"
               >
@@ -68,7 +46,7 @@ export default function Footer() {
               Product
             </h4>
             <ul className="flex flex-col gap-2">
-              {productLinks.map((link, idx) => (
+              {footerLinks.product.map((link, idx) => (
                 <li key={idx}>
                   <a
                     href={link.href}
@@ -87,7 +65,7 @@ export default function Footer() {
               Developers
             </h4>
             <ul className="flex flex-col gap-2">
-              {developerLinks.map((link, idx) => (
+              {footerLinks.developers.map((link, idx) => (
                 <li key={idx}>
                   <a
                     href={link.href}
@@ -106,7 +84,7 @@ export default function Footer() {
               Company
             </h4>
             <ul className="flex flex-col gap-2">
-              {companyLinks.map((link, idx) => (
+              {footerLinks.company.map((link, idx) => (
                 <li key={idx}>
                   <a
                     href={link.href}
@@ -122,7 +100,7 @@ export default function Footer() {
 
         {/* Footer Bottom Bar */}
         <div className="border-t border-slate-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-          <span>&copy; 2026 Vigil. Built for developers.</span>
+          <span>&copy; 2026 {siteConfig.name}. Built for developers.</span>
         </div>
 
       </div>

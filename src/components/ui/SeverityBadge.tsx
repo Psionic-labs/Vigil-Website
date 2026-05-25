@@ -1,6 +1,5 @@
 import React from "react";
-
-type Severity = "P0" | "P1" | "P2" | "P3";
+import { Severity } from "@/types";
 
 interface SeverityBadgeProps {
   severity: Severity;

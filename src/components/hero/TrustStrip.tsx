@@ -1,22 +1,11 @@
 "use client";
 
 import React from "react";
+import { trustCompanies } from "@/config/site";
 
 export default function TrustStrip() {
-  const companies = [
-    "Stackframe",
-    "Meridian",
-    "Orbital",
-    "Capsule",
-    "Acme Corp",
-    "Retool",
-    "Klaviyo",
-    "Sentry",
-    "Vercel",
-  ];
-
   // Tripled to ensure enough horizontal fill for infinite seamless marquee
-  const items = [...companies, ...companies, ...companies];
+  const items = [...trustCompanies, ...trustCompanies, ...trustCompanies];
 
   return (
     <div className="w-full bg-slate-50 border-y border-slate-200/60 py-5 overflow-hidden select-none">
