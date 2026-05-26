@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { navLinks } from "@/config/site";
 
@@ -19,11 +19,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 border-b ${
-        isScrolled
+      className={`sticky top-0 z-50 w-full transition-all duration-300 border-b ${isScrolled
           ? "bg-white/80 backdrop-blur-md border-slate-200/80 shadow-sm"
           : "bg-white border-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Left: Wordmark */}
@@ -48,11 +47,9 @@ export default function Navbar() {
 
         {/* Right: Auth buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost" size="sm">
-            Sign in
-          </Button>
-          <Button href="#install" variant="primary" size="sm">
+          <Button href="#install" variant="pill" size="sm">
             Get started free
+            <ArrowUpRight className="ml-1 w-3.5 h-3.5 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
           </Button>
         </div>
 
@@ -85,11 +82,9 @@ export default function Navbar() {
           </nav>
           <div className="h-px bg-slate-100 my-1" />
           <div className="flex flex-col gap-3">
-            <Button variant="ghost" className="text-left justify-start" onClick={() => setMobileMenuOpen(false)}>
-              Sign in
-            </Button>
-            <Button href="#install" variant="primary" className="w-full text-center" onClick={() => setMobileMenuOpen(false)}>
+            <Button href="#install" variant="pill" className="w-full text-center" onClick={() => setMobileMenuOpen(false)}>
               Get started free
+              <ArrowUpRight className="ml-1 w-3.5 h-3.5 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
             </Button>
           </div>
         </div>

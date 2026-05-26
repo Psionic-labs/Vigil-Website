@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Check, X } from "lucide-react";
 import Section from "@/components/ui/Section";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { comparisonBefore, comparisonAfter } from "@/config/site";
@@ -32,7 +33,7 @@ export default function Comparison() {
           <ul className="space-y-4">
             {comparisonBefore.map((item, idx) => (
               <li key={idx} className="flex items-start gap-3 text-slate-500 font-normal text-sm leading-relaxed">
-                <span className="text-base select-none mt-0.5 filter grayscale opacity-70">{item.emoji}</span>
+                <X className="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0" />
                 <span>{item.text}</span>
               </li>
             ))}
@@ -56,7 +57,7 @@ export default function Comparison() {
           <ul className="space-y-4">
             {comparisonAfter.map((item, idx) => (
               <li key={idx} className="flex items-start gap-3 text-slate-800 font-semibold text-sm leading-relaxed">
-                <span className="text-base select-none mt-0.5">{item.emoji}</span>
+                <Check className="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" />
                 <span>{item.text}</span>
               </li>
             ))}

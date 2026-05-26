@@ -1,6 +1,5 @@
 import Navbar from "@/components/nav/Navbar";
 import HeroSection from "@/components/hero/HeroSection";
-import TrustStrip from "@/components/hero/TrustStrip";
 import AnimatedTaglines from "@/components/hero/AnimatedTaglines";
 import HowItWorks from "@/components/sections/HowItWorks";
 import AITriageSection from "@/components/sections/AITriageSection";
@@ -21,9 +20,6 @@ export default function Home() {
       <main className="flex-grow">
         {/* Hero Section */}
         <HeroSection />
-
-        {/* Logo / Trust Marquee */}
-        <TrustStrip />
 
         {/* Vertical Centerpiece blocks */}
         <AnimatedTaglines />

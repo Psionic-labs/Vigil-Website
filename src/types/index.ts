@@ -43,6 +43,5 @@ export interface TestimonialItem {
 }
 
 export interface ComparisonItem {
-  emoji: string;
   text: string;
 }

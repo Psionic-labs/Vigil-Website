@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import IssuesQueueMockup from "@/components/ui/IssuesQueueMockup";
 import { heroMockupIssues } from "@/config/site";
@@ -13,13 +14,11 @@ export default function HeroSection() {
     "GitHub issues in one click.",
   ];
 
-  const trustCompanies = ["Meridian", "Capsule", "Orbital", "Stackframe"];
-
   return (
     <section className="relative overflow-hidden bg-white pt-20 pb-24 md:pt-28 md:pb-32 border-b border-slate-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Column: Headline and CTAs */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             {/* AI Triage Badge */}
@@ -66,30 +65,12 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8"
             >
-              <Button href="#install" variant="primary" size="md">
+              <Button href="#install" variant="pill" size="md">
                 Get started free
-              </Button>
-              <Button href="#how-it-works" variant="secondary" size="md">
-                See how it works
+                <ArrowUpRight className="ml-1.5 w-4 h-4 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
               </Button>
             </motion.div>
 
-            {/* Social Proof */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="border-t border-slate-100 pt-6"
-            >
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                Used by developers at
-              </p>
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-2 text-sm font-bold tracking-tight text-slate-500">
-                {trustCompanies.map((company) => (
-                  <span key={company}>{company}</span>
-                ))}
-              </div>
-            </motion.div>
           </div>
 
           {/* Right Column: Dashboard Mockup */}

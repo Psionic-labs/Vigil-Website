@@ -248,19 +248,19 @@ export const heroMockupIssues: Issue[] = [
 ];
 
 export const comparisonBefore: ComparisonItem[] = [
-  { emoji: "📹", text: "Watch recordings manually for hours" },
-  { emoji: "🤔", text: "Guess which sessions are worth your time" },
-  { emoji: "📋", text: "Write bug reports from scratch" },
-  { emoji: "🔁", text: "Miss duplicate bugs filed separately" },
-  { emoji: "🚨", text: "Find out when users complain on Twitter" },
+  { text: "Watch recordings manually for hours" },
+  { text: "Guess which sessions are worth your time" },
+  { text: "Write bug reports from scratch" },
+  { text: "Miss duplicate bugs filed separately" },
+  { text: "Find out when users complain on Twitter" },
 ];
 
 export const comparisonAfter: ComparisonItem[] = [
-  { emoji: "⚡", text: "AI triages every session automatically" },
-  { emoji: "📊", text: "Issues ranked by severity and affected sessions" },
-  { emoji: "📝", text: "Root cause, fix, and reproduction steps written for you" },
-  { emoji: "🔗", text: "Repeated failures clustered into one issue group" },
-  { emoji: "🔔", text: "Bug is in your queue before users notice" },
+  { text: "AI triages every session automatically" },
+  { text: "Issues ranked by severity and affected sessions" },
+  { text: "Root cause, fix, and reproduction steps written for you" },
+  { text: "Repeated failures clustered into one issue group" },
+  { text: "Bug is in your queue before users notice" },
 ];
 
 export const testimonials: TestimonialItem[] = [

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Section from "@/components/ui/Section";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Button from "@/components/ui/Button";
@@ -24,11 +25,9 @@ export default function CTASection() {
         transition={{ duration: 0.4, delay: 0.2 }}
         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
       >
-        <Button href="#install" variant="primary" size="lg" className="w-full sm:w-auto">
+        <Button href="#install" variant="pill" size="lg" className="w-full sm:w-auto">
           Get started free
-        </Button>
-        <Button href="#docs" variant="secondary" size="lg" className="w-full sm:w-auto">
-          Read the docs
+          <ArrowUpRight className="ml-2 w-4 h-4 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
         </Button>
       </motion.div>
 
