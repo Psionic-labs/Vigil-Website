@@ -35,13 +35,15 @@ export default function AITriageSection() {
           </div>
         </div>
 
-        {/* Right Column: CodeBlock */}
+        {/* Right Column: CodeBlock with 3D Tilt Motion */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30, rotateX: 3 }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 3 }}
+          whileHover={{ rotateX: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="lg:col-span-7 w-full"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          style={{ transformPerspective: 1200, transformStyle: "preserve-3d" }}
+          className="lg:col-span-7 w-full shadow-2xl rounded-xl overflow-hidden"
         >
           <CodeBlock code={aiTriageJson} language="json" showLineNumbers={true} />
         </motion.div>

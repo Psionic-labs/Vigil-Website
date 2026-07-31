@@ -101,15 +101,15 @@ export default function CodeBlock({
 
   return (
     <div
-      className={`relative rounded-lg border border-slate-800 bg-[#0c0d0e] font-mono text-sm leading-relaxed text-slate-300 overflow-hidden shadow-2xl ${className}`}
+      className={`relative rounded-xl border border-slate-800/90 bg-[#0c0d0e] font-mono text-sm leading-relaxed text-slate-300 overflow-hidden shadow-2xl transition-all duration-300 ${className}`}
     >
       {/* Top Header Row */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-slate-900 bg-[#08090a]">
-        <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-slate-800" />
-          <div className="w-2.5 h-2.5 rounded-full bg-slate-800" />
-          <div className="w-2.5 h-2.5 rounded-full bg-slate-800" />
-          <span className="ml-2 text-xs font-mono tracking-wide text-slate-500 uppercase">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-slate-900/90 bg-[#08090a]">
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-[#ff5f56]/80" />
+          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]/80" />
+          <div className="w-3 h-3 rounded-full bg-[#27c93f]/80" />
+          <span className="ml-2 text-xs font-mono tracking-widest text-slate-400 font-bold uppercase">
             {language}
           </span>
         </div>
@@ -133,7 +133,7 @@ export default function CodeBlock({
       </div>
 
       {/* Code Area */}
-      <div className="p-4 overflow-x-auto flex">
+      <div className="p-4 overflow-hidden flex">
         {showLineNumbers && (
           <div className="select-none text-right text-slate-600 pr-4 border-r border-slate-900 mr-4 font-mono text-xs leading-6 flex flex-col justify-start">
             {lines.map((_, i) => (
@@ -141,7 +141,7 @@ export default function CodeBlock({
             ))}
           </div>
         )}
-        <pre className="flex-1 font-mono text-xs leading-6 text-left whitespace-pre">
+        <pre className="flex-1 font-mono text-xs leading-6 text-left whitespace-pre-wrap break-words">
           <code
             dangerouslySetInnerHTML={{ __html: getHighlightedHtml() }}
           />

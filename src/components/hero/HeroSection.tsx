@@ -67,7 +67,7 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
         >
           <Button href="#install" variant="pill" size="md">
-            Get started free
+            JOIN WAITLIST
             <ArrowUpRight className="ml-1.5 w-4 h-4 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
           </Button>
         </motion.div>

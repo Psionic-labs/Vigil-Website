@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Github } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { navLinks } from "@/config/site";
+import { navLinks, siteConfig } from "@/config/site";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,16 +45,34 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Right: Auth buttons */}
+        {/* Right: Actions */}
         <div className="hidden md:flex items-center gap-4">
+          <a
+            href={siteConfig.socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-600 hover:text-slate-900 transition-colors p-1.5 rounded-lg hover:bg-slate-100"
+            aria-label="GitHub Repository"
+          >
+            <Github className="w-5 h-5" />
+          </a>
           <Button href="#install" variant="pill" size="sm">
-            Get started free
+            JOIN WAITLIST
             <ArrowUpRight className="ml-1 w-3.5 h-3.5 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
           </Button>
         </div>
 
         {/* Mobile Menu Toggle Button */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center gap-2">
+          <a
+            href={siteConfig.socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-600 hover:text-slate-900 p-1 focus:outline-none"
+            aria-label="GitHub Repository"
+          >
+            <Github className="w-5 h-5" />
+          </a>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-slate-600 hover:text-slate-900 p-1 focus:outline-none"
@@ -83,7 +101,7 @@ export default function Navbar() {
           <div className="h-px bg-slate-100 my-1" />
           <div className="flex flex-col gap-3">
             <Button href="#install" variant="pill" className="w-full text-center" onClick={() => setMobileMenuOpen(false)}>
-              Get started free
+              JOIN WAITLIST
               <ArrowUpRight className="ml-1 w-3.5 h-3.5 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
             </Button>
           </div>

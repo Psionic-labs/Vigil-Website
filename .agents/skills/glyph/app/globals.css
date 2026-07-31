@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+
+  /* Colors */
+  --page: #f4f0e8;         /* warm paper */
+  --ink: #171714;          /* soft black */
+  --button: #1a1a17;       /* near-black */
+  --button-text: #f4f0e8;
+
+  --glyph-orange: var(--button);
+  --glyph-orange-hover: #000000;
+  --glyph-orange-soft: #dfdad0;
+  --glyph-text: var(--ink);
+  --glyph-muted: #6b6a65;
+  --glyph-border: #dfdad0;
+  --glyph-border-soft: rgba(23, 23, 20, 0.08);
+  --glyph-surface: var(--page);
+
+  /* Spacing Scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+  --space-4xl: 64px;
+  --space-5xl: 96px;
+
+  /* Radius Tiers */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Shadow Tiers */
+  --shadow-flat: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-rest: 0 2px 8px rgba(17, 17, 17, 0.04);
+  --shadow-hover: 0 16px 48px rgba(17, 17, 17, 0.08);
+  --shadow-active: 0 4px 12px rgba(17, 17, 17, 0.06);
+
+  /* Easing */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.75, 0, 0.85, 1);
+
+  /* Font family */
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: var(--glyph-text);
+  background: var(--glyph-surface);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-host), 'Host Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--glyph-surface);
+}
+
+@keyframes grainAnimation {
+  0%, 100% { transform:translate(0, 0) }
+  10% { transform:translate(-1%, -1%) }
+  20% { transform:translate(-2%, 1%) }
+  30% { transform:translate(1%, -2%) }
+  40% { transform:translate(-1%, 3%) }
+  50% { transform:translate(-2%, 1%) }
+  60% { transform:translate(3%, -1%) }
+  70% { transform:translate(2%, 1%) }
+  80% { transform:translate(-3%, -2%) }
+  90% { transform:translate(1%, 2%) }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: grainAnimation 1s steps(10) infinite;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  color: var(--button-text);
+  background: var(--glyph-orange);
+}
+
+/* Custom CSS Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseOpacity {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 400ms var(--ease-entrance) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 350ms var(--ease-standard) forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulseOpacity 1.5s var(--ease-standard) infinite;
+}
+
+/* Micro-interaction transitions */
+.transition-glyph {
+  transition: all 200ms var(--ease-standard);
+}
+
+/* Class active states */
+.active-press {
+  transition: transform 100ms var(--ease-standard);
+}
+.active-press:active {
+  transform: scale(0.98) !important;
+}
+
+/* Blueprint canvas design assets */
+.bg-blueprint-grid {
+  background-image: radial-gradient(rgba(23, 23, 20, 0.06) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+.bg-dot-grid-sm {
+  background-image: radial-gradient(rgba(23, 23, 20, 0.045) 0.8px, transparent 0.8px);
+  background-size: 8px 8px;
+}
+
+.guideline-y {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-image: linear-gradient(to bottom, rgba(23, 23, 20, 0.04) 50%, transparent 50%);
+  background-size: 1px 8px;
+}
+
+.guideline-x {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(23, 23, 20, 0.04) 50%, transparent 50%);
+  background-size: 8px 1px;
+}
+
+/* Animated cursors and smooth animations */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.animate-cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes floatBg {
+  0% { background-position: 50% 50%; }
+  50% { background-position: 50% 53%; }
+  100% { background-position: 50% 50%; }
+}
+.animate-float-bg {
+  background-size: cover;
+  animation: floatBg 25s ease-in-out infinite;
+}
+
+/* Custom premium shadows & elevation (shadcn style) */
+.shadow-premium-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.shadow-premium-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+.shadow-premium-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+}
+.shadow-premium-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+}
+
+/* Scale-up entrance animation for copy checkmark */
+@keyframes scaleUp {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.animate-scale-up {
+  animation: scaleUp 200ms var(--ease-entrance) forwards;
+}
+
+/* Slop demo: pulsing orb animation */
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(8px, -6px) scale(1.08); }
+}
+
+/* Reduced motion override (Accessibility Rules) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-pulse-slow,
+  .animate-cursor-blink,
+  .animate-scale-up {
+    animation: none !important;
+  }
+  body::before {
+    animation: none !important;
+  }
+  .transition-glyph,
+  .active-press {
+    transition: none !important;
+  }
+}

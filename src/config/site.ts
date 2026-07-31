@@ -23,7 +23,7 @@ export const siteConfig = {
   name: "Vigil",
   description: "AI-native bug triage platform. Watches user sessions, clusters failures, and prepares GitHub issues.",
   socials: {
-    github: "https://github.com",
+    github: "https://github.com/Psionic-labs/Vigil",
     twitter: "https://twitter.com",
   },
 };
@@ -121,7 +121,7 @@ export const workflowSteps: WorkflowStep[] = [
 ];
 
 export const aiTriageJson = `{
-  "session_summary": "User attempted checkout and could not submit payment after POST /api/payment returned 500.",
+  "session_summary": "Payment failed on POST /api/payment 500",
   "goal_completed": false,
   "friction_score": 92,
   "issues": [
@@ -129,12 +129,12 @@ export const aiTriageJson = `{
       "title": "Payment fails silently on 500 error",
       "severity": "P0",
       "confidence": 0.91,
-      "root_cause": "POST /api/payment returns 500 immediately after pay button click. UI provides no error feedback.",
-      "suggested_fix": "Check response.ok in the payment handler and surface a recovery message on failure.",
+      "root_cause": "POST /api/payment 500; UI lacks error state",
+      "suggested_fix": "Handle !res.ok and surface toast notification",
       "reproduction_steps": [
         "Open /checkout",
         "Click pay button",
-        "Observe POST /api/payment → 500",
+        "Observe POST /api/payment -> 500",
         "Observe no user-facing error shown"
       ]
     }

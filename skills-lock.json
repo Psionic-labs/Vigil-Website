@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "glyph": {
+      "source": "sumitttt4/Glyph-Skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "31271c89fc82b68388782f97b014bfdd60e54ab1863347bd9524ecc532138bd4"
+    }
+  }
+}

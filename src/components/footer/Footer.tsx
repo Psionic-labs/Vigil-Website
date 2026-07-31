@@ -25,8 +25,10 @@ export default function Footer() {
             <div className="flex items-center gap-3.5 mt-2">
               <a
                 href={siteConfig.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 hover:text-slate-600 transition-colors"
-                aria-label="GitHub Profile"
+                aria-label="GitHub Repository"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -100,7 +102,7 @@ export default function Footer() {
 
         {/* Footer Bottom Bar */}
         <div className="border-t border-slate-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-          <span>&copy; 2026 {siteConfig.name}. Built for developers.</span>
+          <span>&copy; 2026 Psionics</span>
         </div>
 
       </div>

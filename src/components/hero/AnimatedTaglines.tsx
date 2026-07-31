@@ -44,10 +44,6 @@ export default function AnimatedTaglines() {
                 index !== 0 ? "border-t border-slate-200" : ""
               }`}
             >
-              {/* Monospace index number at top-right */}
-              <span className="absolute top-4 right-0 font-mono text-[10px] text-slate-400 tracking-widest font-bold">
-                INDEX // {block.index}
-              </span>
 
               {/* Large Display Word */}
               <h2 className="font-sans font-extrabold text-5xl sm:text-7xl tracking-tighter text-slate-900 mb-4 transition-all duration-300 group-hover:text-brand-700 group-hover:opacity-90 select-none">

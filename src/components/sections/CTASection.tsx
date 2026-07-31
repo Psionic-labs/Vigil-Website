@@ -26,7 +26,7 @@ export default function CTASection() {
         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
       >
         <Button href="#install" variant="pill" size="lg" className="w-full sm:w-auto">
-          Get started free
+          JOIN WAITLIST
           <ArrowUpRight className="ml-2 w-4 h-4 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
         </Button>
       </motion.div>

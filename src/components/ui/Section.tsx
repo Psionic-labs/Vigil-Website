@@ -9,7 +9,7 @@ interface SectionProps {
   containerSize?: "default" | "small";
   className?: string;
   animate?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function Section({
