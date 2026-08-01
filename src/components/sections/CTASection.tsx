@@ -25,8 +25,8 @@ export default function CTASection() {
         transition={{ duration: 0.4, delay: 0.2 }}
         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
       >
-        <Button href="#install" variant="pill" size="lg" className="w-full sm:w-auto">
-          JOIN WAITLIST
+        <Button href="https://forms.gle/pbhaXzgZBQnArC7w8" target="_blank" rel="noopener noreferrer" variant="pill" size="lg" className="w-full sm:w-auto">
+          JOIN INTEREST LIST
           <ArrowUpRight className="ml-2 w-4 h-4 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
         </Button>
       </motion.div>

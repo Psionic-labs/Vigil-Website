@@ -56,8 +56,8 @@ export default function Navbar() {
           >
             <Github className="w-5 h-5" />
           </a>
-          <Button href="#install" variant="pill" size="sm">
-            JOIN WAITLIST
+          <Button href="https://forms.gle/pbhaXzgZBQnArC7w8" target="_blank" rel="noopener noreferrer" variant="pill" size="sm">
+            JOIN INTEREST LIST
             <ArrowUpRight className="ml-1 w-3.5 h-3.5 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
           </Button>
         </div>
@@ -100,8 +100,8 @@ export default function Navbar() {
           </nav>
           <div className="h-px bg-slate-100 my-1" />
           <div className="flex flex-col gap-3">
-            <Button href="#install" variant="pill" className="w-full text-center" onClick={() => setMobileMenuOpen(false)}>
-              JOIN WAITLIST
+            <Button href="https://forms.gle/pbhaXzgZBQnArC7w8" target="_blank" rel="noopener noreferrer" variant="pill" className="w-full text-center" onClick={() => setMobileMenuOpen(false)}>
+              JOIN INTEREST LIST
               <ArrowUpRight className="ml-1 w-3.5 h-3.5 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
             </Button>
           </div>

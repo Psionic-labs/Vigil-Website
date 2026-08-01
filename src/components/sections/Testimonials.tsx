@@ -12,8 +12,8 @@ export default function Testimonials() {
       {/* Section Header */}
       <SectionHeader badge="Feedback" title="What developers say." />
 
-      {/* Testimonials 3-Card Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Testimonials Layout */}
+      <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2 md:justify-items-center">
         {testimonials.map((rev, idx) => (
           <motion.div
             key={idx}
@@ -21,7 +21,7 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: idx * 0.1 }}
-            className="p-6 rounded-lg bg-white border border-slate-200 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow duration-300"
+            className="w-full max-w-md p-6 rounded-lg bg-white border border-slate-200 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow duration-300"
           >
             {/* Quote */}
             <p className="text-sm text-slate-600 font-normal leading-relaxed italic mb-6">

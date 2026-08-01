@@ -55,8 +55,8 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
         >
-          <Button href="#install" variant="pill" size="md">
-            JOIN WAITLIST
+          <Button href="https://forms.gle/pbhaXzgZBQnArC7w8" target="_blank" rel="noopener noreferrer" variant="pill" size="md">
+            JOIN INTEREST LIST
             <ArrowUpRight className="ml-1.5 w-4 h-4 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
           </Button>
         </motion.div>
