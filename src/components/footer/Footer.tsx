@@ -1,8 +1,22 @@
 "use client";
 
 import React from "react";
-import { Github, Twitter } from "lucide-react";
+import { Github } from "lucide-react";
 import { siteConfig, footerLinks } from "@/config/site";
+
+function XLogo({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.153h7.594l5.243 6.932 6.064-6.932Zm-1.293 19.494h2.039L6.486 3.24H4.298l13.31 17.407Z" />
+    </svg>
+  );
+}
 
 export default function Footer() {
   return (
@@ -35,9 +49,9 @@ export default function Footer() {
               <a
                 href={siteConfig.socials.twitter}
                 className="text-slate-400 hover:text-slate-600 transition-colors"
-                aria-label="Twitter Profile"
+                aria-label="X Profile"
               >
-                <Twitter className="w-4 h-4" />
+                <XLogo className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -50,12 +64,9 @@ export default function Footer() {
             <ul className="flex flex-col gap-2">
               {footerLinks.product.map((link, idx) => (
                 <li key={idx}>
-                  <a
-                    href={link.href}
-                    className="text-xs font-semibold text-slate-600 hover:text-brand-700 transition-colors"
-                  >
+                  <span className="text-xs font-semibold text-slate-600 cursor-default">
                     {link.name}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -69,12 +80,9 @@ export default function Footer() {
             <ul className="flex flex-col gap-2">
               {footerLinks.developers.map((link, idx) => (
                 <li key={idx}>
-                  <a
-                    href={link.href}
-                    className="text-xs font-semibold text-slate-600 hover:text-brand-700 transition-colors"
-                  >
+                  <span className="text-xs font-semibold text-slate-600 cursor-default">
                     {link.name}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -88,12 +96,9 @@ export default function Footer() {
             <ul className="flex flex-col gap-2">
               {footerLinks.company.map((link, idx) => (
                 <li key={idx}>
-                  <a
-                    href={link.href}
-                    className="text-xs font-semibold text-slate-600 hover:text-brand-700 transition-colors"
-                  >
+                  <span className="text-xs font-semibold text-slate-600 cursor-default">
                     {link.name}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>
