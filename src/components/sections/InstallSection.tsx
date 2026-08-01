@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Section from "@/components/ui/Section";
 import SectionHeader from "@/components/ui/SectionHeader";
 import CodeBlock from "@/components/ui/CodeBlock";
@@ -52,7 +53,15 @@ export default function InstallSection() {
       </div>
 
       {/* Tab Code Output */}
-      <div className="max-w-2xl mx-auto mb-10">
+      <motion.div
+        initial={{ opacity: 0, y: 28, rotateX: 3 }}
+        whileInView={{ opacity: 1, y: 0, rotateX: 3 }}
+        whileHover={{ rotateX: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        style={{ transformPerspective: 1200, transformStyle: "preserve-3d" }}
+        className="max-w-2xl mx-auto mb-10"
+      >
         {activeTab === "script" ? (
           <CodeBlock code={installSnippets.script} language="html" showLineNumbers={true} />
         ) : (
@@ -61,7 +70,7 @@ export default function InstallSection() {
             <CodeBlock code={installSnippets.npmInit} language="typescript" showLineNumbers={true} />
           </div>
         )}
-      </div>
+      </motion.div>
 
       {/* Stat Pills */}
       <div className="flex flex-wrap items-center justify-center gap-4">
