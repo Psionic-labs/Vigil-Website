@@ -21,17 +21,6 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0 hero-grid-pattern pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-
-        {/* AI Triage Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-50 border border-brand-200/50 text-xs font-bold uppercase tracking-wider text-brand-700 mb-6"
-        >
-          <span>⚡</span> AI triage for every session
-        </motion.div>
-
         {/* Main Headline */}
         <h1 className="text-4xl sm:text-6xl font-serif text-slate-900 tracking-tight leading-[1.1] mb-6 max-w-3xl">
           {headlineWords.map((phrase, index) => (
@@ -55,7 +44,7 @@ export default function HeroSection() {
           className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-xl mx-auto mb-8"
         >
           Vigil watches every user session, clusters repeated failures,
-          and hands you a prioritized queue of developer-ready bug reports —
+          and hands you a prioritized queue of developer-ready bug reports &mdash;
           before your users open a support ticket.
         </motion.p>
 
@@ -71,7 +60,6 @@ export default function HeroSection() {
             <ArrowUpRight className="ml-1.5 w-4 h-4 text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
           </Button>
         </motion.div>
-
       </div>
     </section>
   );
