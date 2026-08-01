@@ -291,20 +291,18 @@ export const testimonials: TestimonialItem[] = [
 ];
 
 export const installSnippets = {
-  script: `<script src="https://cdn.usevigilhq.com/sdk/v1/vigil.min.js"></script>
+  script: `<script src="https://cdn.vigil.dev/sdk.js" defer></script>
 <script>
   Vigil.init({
-    projectKey: "pk_live_xxxxxxxxxxxx",
+    projectKey: "pk_playground",
     environment: "production",
-    release: "web-2026.05.08",
+    release: "1.0.0", // Replace with your release/version
   });
 </script>`,
-  npmInstall: `pnpm add @vigil/sdk`,
+  npmInstall: `npm install @vigil/sdk`,
   npmInit: `import { Vigil } from "@vigil/sdk";
 
 Vigil.init({
-  projectKey: "pk_live_xxxxxxxxxxxx",
-  environment: "production",
-  release: "web-2026.05.08",
+  projectKey: "pk_playground",
 });`,
 };

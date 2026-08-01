@@ -18,6 +18,41 @@ export default function CodeBlock({
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
+  const escapeHtml = (value: string) =>
+    value
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+  const highlightSafely = (
+    value: string,
+    rules: Array<{
+      pattern: RegExp;
+      replacement: (...matches: string[]) => string;
+    }>
+  ) => {
+    const tokens: string[] = [];
+    let highlighted = value;
+
+    const stash = (html: string) => {
+      const token = `%%CODE_HIGHLIGHT_${tokens.length}%%`;
+      tokens.push(html);
+      return token;
+    };
+
+    rules.forEach(({ pattern, replacement }) => {
+      highlighted = highlighted.replace(pattern, (...matches) =>
+        stash(replacement(...(matches as string[])))
+      );
+    });
+
+    tokens.forEach((html, index) => {
+      highlighted = highlighted.replace(`%%CODE_HIGHLIGHT_${index}%%`, html);
+    });
+
+    return highlighted;
+  };
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
@@ -30,71 +65,82 @@ export default function CodeBlock({
 
   // Safe manual syntax highlighting helper
   const getHighlightedHtml = () => {
-    if (language === "json") {
-      const safeCode = code
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+    const safeCode = escapeHtml(code);
 
-      return safeCode.replace(
-        /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
-        (match) => {
-          let cls = "text-slate-300";
-          if (/^"/.test(match)) {
-            if (/:$/.test(match)) {
-              cls = "text-indigo-400 font-medium";
-              return `<span class="${cls}">${match.slice(0, -1)}</span><span class="text-slate-500">:</span>`;
-            } else {
+    if (language === "json") {
+      return highlightSafely(safeCode, [
+        {
+          pattern:
+            /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
+          replacement: (match) => {
+            let cls = "text-slate-300";
+            if (/^"/.test(match)) {
+              if (/:$/.test(match)) {
+                cls = "text-indigo-400 font-medium";
+                return `<span class="${cls}">${match.slice(0, -1)}</span><span class="text-slate-500">:</span>`;
+              }
               cls = "text-emerald-400";
+            } else if (/true|false/.test(match)) {
+              cls = "text-rose-400 font-semibold";
+            } else if (/null/.test(match)) {
+              cls = "text-slate-500";
+            } else {
+              cls = "text-amber-400";
             }
-          } else if (/true|false/.test(match)) {
-            cls = "text-rose-400 font-semibold";
-          } else if (/null/.test(match)) {
-            cls = "text-slate-500";
-          } else {
-            cls = "text-amber-400";
-          }
-          return `<span class="${cls}">${match}</span>`;
-        }
-      );
+            return `<span class="${cls}">${match}</span>`;
+          },
+        },
+      ]);
     }
 
     if (language === "typescript") {
-      const safeCode = code
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
-
-      return safeCode
-        .replace(/\b(import|from|const|new|export|default|class|function|return|as|let|var)\b/g, '<span class="text-indigo-400 font-semibold">$1</span>')
-        .replace(/\b(Vigil|projectKey|environment|release|init|project|pk_live_xxxxxxxxxxxx)\b/g, '<span class="text-emerald-400">$1</span>')
-        .replace(/(["'`][^"'`]*["'`])/g, '<span class="text-amber-400">$1</span>');
+      return highlightSafely(safeCode, [
+        {
+          pattern: /(["'`][^"'`]*["'`])/g,
+          replacement: (match) => `<span class="text-amber-400">${match}</span>`,
+        },
+        {
+          pattern: /\b(import|from|const|new|export|default|class|function|return|as|let|var)\b/g,
+          replacement: (match) => `<span class="text-indigo-400 font-semibold">${match}</span>`,
+        },
+        {
+          pattern: /\b(Vigil|projectKey|environment|release|init|project|pk_live_xxxxxxxxxxxx|pk_playground)\b/g,
+          replacement: (match) => `<span class="text-emerald-400">${match}</span>`,
+        },
+      ]);
     }
 
     if (language === "html") {
-      const safeCode = code
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
-
-      return safeCode
-        .replace(/(&lt;script&gt;|&lt;\/script&gt;|&lt;script|&gt;)/g, '<span class="text-indigo-400">$1</span>')
-        .replace(/(["'`][^"'`]*["'`])/g, '<span class="text-emerald-400">$1</span>')
-        .replace(/\b(src|projectKey|environment|release|init|projectKey)\b/g, '<span class="text-amber-400">$1</span>');
+      return highlightSafely(safeCode, [
+        {
+          pattern: /(["'`][^"'`]*["'`])/g,
+          replacement: (match) => `<span class="text-emerald-400">${match}</span>`,
+        },
+        {
+          pattern: /(&lt;\/?script|&gt;)/g,
+          replacement: (match) => `<span class="text-indigo-400">${match}</span>`,
+        },
+        {
+          pattern: /\b(src|defer|projectKey|environment|release|init)\b/g,
+          replacement: (match) => `<span class="text-amber-400">${match}</span>`,
+        },
+      ]);
     }
 
     if (language === "bash") {
-      const safeCode = code
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
-
-      return safeCode
-        .replace(/\b(npm install|pnpm add|pnpm install|yarn add)\b/g, '<span class="text-indigo-400 font-semibold">$1</span>')
-        .replace(/(@[a-zA-Z0-9-/]+)/g, '<span class="text-emerald-400">$1</span>');
+      return highlightSafely(safeCode, [
+        {
+          pattern: /\b(npm install|pnpm add|pnpm install|yarn add)\b/g,
+          replacement: (match) => `<span class="text-indigo-400 font-semibold">${match}</span>`,
+        },
+        {
+          pattern: /(@[a-zA-Z0-9-/]+)/g,
+          replacement: (match) => `<span class="text-emerald-400">${match}</span>`,
+        },
+      ]);
     }
 
-    return code;
+    return safeCode;
   };
 
   const lines = code.trim().split("\n");
