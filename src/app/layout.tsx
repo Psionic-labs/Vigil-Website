@@ -17,6 +17,11 @@ const lora = Lora({
 export const metadata: Metadata = {
   title: "Vigil — AI-Native Bug Triage Platform for Developers",
   description: "Vigil watches every user session, clusters repeated failures, and hands you a prioritized queue of developer-ready, GitHub-ready bug reports.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
